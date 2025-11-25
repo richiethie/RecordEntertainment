@@ -1,22 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Stack+Sans+Text:wght@200..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #181818;
+  --foreground: #ffffff;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Stack Sans Text', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Glassmorphism / Liquid Glass Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+  
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Subtle glass effect for text */
+  .text-glass {
+    color: rgba(255, 255, 255, 0.70);
+    text-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.2),
+      0 0 1px rgba(255, 255, 255, 0.5);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Infinite scroll animation for carousel */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: fit-content;
+  }
+  
+  /* Floating animation for images */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+  
+  /* Text outline effect */
+  .text-outline {
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 2px #22c55e;
+  }
+  
+  /* Hero text character-by-character fade animations */
+  @keyframes charFadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes charFadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .animate-char-fade-in {
+    animation: charFadeIn 1s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .animate-char-fade-out {
+    animation: charFadeOut 0.5s ease-in forwards;
+    opacity: 1;
+  }
+  
+  /* FAQ fade-in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  /* Pulsing audio waveform animation */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scaleY(0.3);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+}
+
 
