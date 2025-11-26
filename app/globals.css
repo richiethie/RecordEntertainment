@@ -40,11 +40,64 @@ body {
   }
   
   .glass-card {
+    position: relative;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1.25rem;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 4px 20px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+  }
+  
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: inherit;
+    backdrop-filter: blur(1px);
+    box-shadow: 
+      inset -8px -6px 0px -9px rgba(255, 255, 255, 0.25),
+      inset 0px -7px 0px -6px rgba(255, 255, 255, 0.2);
+    opacity: 0.4;
+    z-index: -1;
+    filter: blur(1px) brightness(102%);
+    pointer-events: none;
+  }
+  
+  .glass-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.01) 40%,
+      transparent 70%
+    );
+    pointer-events: none;
+    animation: liquidShine 10s ease-in-out infinite;
+    z-index: -1;
+  }
+  
+  @keyframes liquidShine {
+    0%, 100% {
+      opacity: 0.5;
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translate(3%, 3%) scale(1.05);
+    }
   }
   
   /* Subtle glass effect for text */
@@ -162,6 +215,81 @@ body {
       transform: scaleY(1);
       opacity: 1;
     }
+  }
+  
+  /* Honeybook Widget Styling */
+  .honeybook-container {
+    min-height: 500px;
+    position: relative;
+  }
+  
+  /* Style Honeybook iframe if it exists */
+  .honeybook-container iframe {
+    width: 100% !important;
+    min-height: 500px;
+    border: none !important;
+    border-radius: 1rem;
+    background: transparent;
+  }
+  
+  /* Style Honeybook widget container div */
+  .honeybook-container .hb-p-5ddd379ab8a407001bb8c4d0-5 {
+    width: 100%;
+    min-height: 500px;
+  }
+  
+  /* Try to style any accessible Honeybook form elements (may not work if in iframe) */
+  .honeybook-container input:not([type="hidden"]),
+  .honeybook-container textarea,
+  .honeybook-container select {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .honeybook-container button,
+  .honeybook-container input[type="submit"] {
+    background-color: #22c55e !important;
+    color: black !important;
+    border-radius: 0.75rem !important;
+    font-weight: 600 !important;
+  }
+  
+  .honeybook-container label {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  /* Select dropdown styling for dark theme */
+  select {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: white !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Style select options - limited browser support but helps where possible */
+  select option {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    padding: 0.75rem !important;
+  }
+  
+  /* Selected option styling */
+  select option:checked {
+    background-color: #22c55e !important;
+    color: black !important;
+  }
+  
+  /* Focus state for select */
+  select:focus {
+    outline: none;
+  }
+  
+  /* Custom dropdown arrow - white to match theme */
+  select::-ms-expand {
+    display: none;
   }
 }
 

@@ -390,41 +390,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Premium CTA Section */}
-      <section className="relative py-16 sm:py-24 lg:py-32 bg-dark-500 text-white overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-500/5 via-transparent to-primary-500/3"></div>
-        </div>
-
-        <div className="max-w-5xl mx-auto px-2 sm:px-4 lg:px-6 text-center relative z-10">
-          <div className="glass-strong rounded-2xl sm:rounded-3xl p-6 sm:p-10 lg:p-12 xl:p-20 relative overflow-hidden">
-            {/* Decorative elements - smaller on mobile */}
-            <div className="absolute top-0 left-0 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border-t-2 border-l-2 border-primary-500/30 rounded-tl-2xl sm:rounded-tl-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 border-b-2 border-r-2 border-primary-500/30 rounded-br-2xl sm:rounded-br-3xl"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-r from-white via-white to-primary-500 bg-clip-text text-transparent">
-                Ready to Get Started?
-              </h2>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-300 mb-8 sm:mb-10 lg:mb-12 max-w-3xl mx-auto leading-relaxed">
-                Contact us today for a quote and let's make your event unforgettable
-              </p>
-              <Link
-                href="/booking"
-                className="group relative inline-block bg-primary-500 text-black px-6 sm:px-8 lg:px-10 xl:px-14 py-3 sm:py-4 lg:py-5 xl:py-6 rounded-xl sm:rounded-2xl font-bold text-base sm:text-lg lg:text-xl xl:text-2xl hover:bg-primary-400 transition-all duration-300 transform hover:scale-105"
-              >
-                <span className="relative z-10 flex items-center gap-2 sm:gap-3">
-                  Get a Quote
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

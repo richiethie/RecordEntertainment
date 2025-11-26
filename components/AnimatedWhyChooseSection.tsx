@@ -101,12 +101,6 @@ export default function AnimatedWhyChooseSection({ locationName }: AnimatedWhyCh
 
   return (
     <section ref={sectionRef} className="py-12 bg-dark-200 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-      </div>
-
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         <div className="text-center mb-10">
           <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">WHY CHOOSE US</p>

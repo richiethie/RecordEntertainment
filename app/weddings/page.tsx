@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
-import Image from 'next/image';
-import OverlappingImages from '@/components/OverlappingImages';
-import OverlappingImagesMobile from '@/components/OverlappingImagesMobile';
+import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
+import ServicesDiagonal from '@/components/ServicesDiagonal';
+import FeaturesGrid from '@/components/FeaturesGrid';
+import GalleryMasonry from '@/components/GalleryMasonry';
 
 export default function Weddings() {
   const weddingServices = [
@@ -27,161 +30,71 @@ export default function Weddings() {
     },
   ];
 
-  const addOnServices = [
+  const features = [
     {
-      title: 'Photo Booth',
-      description: '3 hours of our photo booth complete with props, unlimited photos for your guests, an attendant to operate the booth, and a book of all of the photos put together for the wedding couple. Travel & setup included.',
-      image: '/assets/images/p-6.jpg',
+      title: '7x Couple\'s Choice Award',
+      description: 'Recognized excellence in wedding entertainment by couples across Wisconsin',
     },
     {
-      title: 'Uplights (4)',
-      description: 'Colorful accent lighting to highlight areas at your reception. Color(s), placement, and number of lights can be determined closer to the wedding.',
-      image: '/assets/images/p-7.jpg',
+      title: '40+ Years Experience',
+      description: 'Decades of creating unforgettable wedding memories with attention to every detail',
     },
     {
-      title: 'Monogram Light',
-      description: 'A beautiful, custom designed monogram with your names, initials, and date; projected where you choose - above your head table, your dance floor, you name it!',
-      image: '/assets/images/p-8.jpg',
+      title: '100% Dedicated',
+      description: 'Committed to making your special day perfect from ceremony to last dance',
     },
-    {
-      title: 'MultiMedia Memories',
-      description: 'Video creation of 3 vignettes of your photos: 25 + 25 photos of each partner individually, and 25 photos of the couple together - edited to music selections of your choice and displayed on our projector and screen at your reception.',
-      image: '/assets/images/p-9.jpg',
-    },
+  ];
+
+  const galleryImages = [
+    { src: '/assets/images/wedding1.jpg', alt: 'Wedding celebration' },
+    { src: '/assets/images/p-4.jpeg', alt: 'Wedding event' },
+    { src: '/assets/images/p-5.jpg', alt: 'Wedding reception' },
+    { src: '/assets/images/p-6.jpg', alt: 'Wedding party' },
   ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-dark-500 text-white py-16">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
+      {/* Hero Section with Video Background */}
+      <section className="relative text-white overflow-x-hidden min-h-[50vh] sm:min-h-[50vh] flex items-center justify-center">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <VideoBackgroundRounded />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10 w-full text-center">
           <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Weddings</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Your Perfect Wedding Day</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            Your Perfect Wedding Day
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto text-glass">
             We've helped countless couples bring their vision to life. Allow us to bring the energy to the next level while keeping the formalities elegant and timeless.
           </p>
         </div>
       </section>
 
-      {/* Image Section */}
-      <section className="py-16 bg-dark-100">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="block sm:hidden">
-            <OverlappingImagesMobile
-              primaryImage="/assets/images/wedding1.jpg"
-              secondaryImage="/assets/images/p-4.jpeg"
-              primaryAlt="Wedding event"
-              secondaryAlt="Wedding celebration"
-            />
-          </div>
-          <div className="hidden sm:block">
-            <OverlappingImages
-              primaryImage="/assets/images/wedding1.jpg"
-              secondaryImage="/assets/images/p-4.jpeg"
-              primaryAlt="Wedding event"
-              secondaryAlt="Wedding celebration"
-            />
-          </div>
-        </div>
-      </section>
+      {/* Diagonal Services Section */}
+      <ServicesDiagonal 
+        services={weddingServices}
+        sectionTitle="Wedding Services"
+        sectionSubtitle="From ceremony to reception, we provide comprehensive DJ services to make your special day unforgettable."
+        bgColor="bg-dark-500"
+      />
 
-      {/* Standard Wedding Services */}
-      <section className="py-16 bg-dark">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Wedding Services</h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              From ceremony to reception, we provide comprehensive DJ services to make your special day unforgettable.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {weddingServices.map((service, index) => (
-              <div key={index} className="glass-card rounded-2xl p-6 hover:scale-105 transition-transform duration-300">
-                <div className="relative h-48 rounded-xl mb-4 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Features Grid Section */}
+      <FeaturesGrid 
+        features={features}
+        sectionTitle="Why Choose Record Entertainment for Your Wedding?"
+        bgColor="bg-dark-500"
+      />
 
-      {/* Add-On Services */}
-      <section className="py-16 bg-dark-200">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Add-On Services</h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Enhance your wedding experience with these additional services.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {addOnServices.map((service, index) => (
-              <div key={index} className="glass-card rounded-2xl p-6 hover:scale-105 transition-transform duration-300">
-                <div className="relative h-48 rounded-xl mb-4 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Gallery Section */}
+      <GalleryMasonry 
+        images={galleryImages}
+        sectionTitle="Wedding Memories"
+        sectionSubtitle="See the elegance and joy we bring to weddings throughout Wisconsin."
+        bgColor="bg-dark-500"
+      />
 
-      {/* Why Choose Us */}
-      <section className="py-16 bg-dark">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Why Choose Record Entertainment for Your Wedding?</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">7x</div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Couple's Choice Award</h3>
-              <p className="text-gray-300">Recognized excellence in wedding entertainment</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">40+</div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Years of Experience</h3>
-              <p className="text-gray-300">Decades of creating unforgettable wedding memories</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-primary-500 mb-2">100%</div>
-              <h3 className="text-xl font-semibold mb-2 text-white">Dedicated</h3>
-              <p className="text-gray-300">Committed to making your day perfect</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-dark-500 text-white">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Perfect Wedding?</h2>
-          <p className="text-xl mb-8 text-gray-300">Contact us today to discuss your wedding DJ needs</p>
-          <Link
-            href="/booking"
-            className="inline-block bg-primary-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-600 transition-all duration-200"
-          >
-            Get a Quote
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

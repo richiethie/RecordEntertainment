@@ -1,7 +1,10 @@
+'use client';
+
 import Link from 'next/link';
-import Image from 'next/image';
-import LeftOverlappingImages from '@/components/LeftOverlappingImages';
-import LeftOverlappingImagesMobile from '@/components/LeftOverlappingImagesMobile';
+import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
+import ServicesDiagonal from '@/components/ServicesDiagonal';
+import FeaturesGrid from '@/components/FeaturesGrid';
+import GalleryMasonry from '@/components/GalleryMasonry';
 
 interface CorporateService {
   title: string;
@@ -43,106 +46,71 @@ export default function CorporateEvents() {
     },
   ];
 
+  const features = [
+    {
+      title: 'Professional',
+      description: 'Experienced DJs who understand corporate event dynamics and maintain appropriate standards',
+    },
+    {
+      title: 'Flexible',
+      description: 'We adapt to your event timeline and requirements, ensuring everything runs smoothly',
+    },
+    {
+      title: 'Reliable',
+      description: 'Count on us to deliver professional service that reflects well on your company',
+    },
+  ];
+
+  const galleryImages = [
+    { src: '/assets/images/corporate1.jpg', alt: 'Corporate event' },
+    { src: '/assets/images/corporate2.jpg', alt: 'Corporate celebration' },
+    { src: '/assets/images/p-1.jpg', alt: 'Corporate gathering' },
+    { src: '/assets/images/p-2.jpg', alt: 'Business event' },
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-dark-500 text-white py-16">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
+      {/* Hero Section with Video Background */}
+      <section className="relative text-white overflow-x-hidden min-h-[50vh] sm:min-h-[50vh] flex items-center justify-center">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <VideoBackgroundRounded />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10 w-full text-center">
           <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Corporate Events/Parties</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Elevate Your Corporate Events</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            Elevate Your Corporate Events
+          </h1>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-200 max-w-3xl mx-auto text-glass">
             Seminars, Expos, Meetings, Holiday or Special Events. Our extensive corporate event experience can elevate your next occasion.
           </p>
         </div>
       </section>
 
-      {/* Image Section */}
-      <section className="py-16 bg-dark-100">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="block sm:hidden">
-            <LeftOverlappingImagesMobile
-              primaryImage="/assets/images/corporate1.jpg"
-              secondaryImage="/assets/images/corporate2.jpg"
-              primaryAlt="Corporate event"
-              secondaryAlt="Corporate celebration"
-            />
-          </div>
-          <div className="hidden sm:block">
-            <LeftOverlappingImages
-              primaryImage="/assets/images/corporate1.jpg"
-              secondaryImage="/assets/images/corporate2.jpg"
-              primaryAlt="Corporate event"
-              secondaryAlt="Corporate celebration"
-            />
-          </div>
-        </div>
-      </section>
+      {/* Diagonal Services Section */}
+      <ServicesDiagonal 
+        services={corporateServices}
+        sectionTitle="Corporate Event Services"
+        sectionSubtitle="Professional DJ services tailored for your business needs"
+        bgColor="bg-dark-500"
+      />
 
-      {/* Corporate Services */}
-      <section className="py-16 bg-dark">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Corporate Event Services</h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-              Professional DJ services tailored for your business needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {corporateServices.map((service, index) => (
-              <div key={index} className="glass-card rounded-2xl p-6 hover:scale-105 transition-transform duration-300">
-                <div className="relative h-48 rounded-xl mb-4 overflow-hidden">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Features Grid Section */}
+      <FeaturesGrid 
+        features={features}
+        sectionTitle="Why Choose Record Entertainment?"
+        bgColor="bg-dark-500"
+      />
 
-      {/* Why Choose Us */}
-      <section className="py-16 bg-dark-200">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">Why Choose Record Entertainment?</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-2 text-white">Professional</h3>
-              <p className="text-gray-300">Experienced DJs who understand corporate event dynamics and maintain appropriate standards</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-2 text-white">Flexible</h3>
-              <p className="text-gray-300">We adapt to your event timeline and requirements, ensuring everything runs smoothly</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-2 text-white">Reliable</h3>
-              <p className="text-gray-300">Count on us to deliver professional service that reflects well on your company</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Gallery Section */}
+      <GalleryMasonry 
+        images={galleryImages}
+        sectionTitle="Corporate Events"
+        sectionSubtitle="See the professionalism and energy we bring to corporate events throughout Wisconsin."
+        bgColor="bg-dark-500"
+      />
 
-      {/* CTA Section */}
-      <section className="py-16 bg-dark-500 text-white">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Elevate Your Corporate Event?</h2>
-          <p className="text-xl mb-8 text-gray-300">Contact us today to discuss your corporate event needs</p>
-          <Link
-            href="/booking"
-            className="inline-block bg-primary-500 text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-600 transition-all duration-200"
-          >
-            Get a Quote
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

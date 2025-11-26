@@ -141,7 +141,12 @@ export default function Reviews() {
         </div>
         
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10 w-full text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Reviews</h1>
+          <div className="mb-4 sm:mb-8">
+            <div className="inline-block px-4 py-2 sm:px-6 sm:py-3 glass-strong rounded-full">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-primary-500 font-semibold">Reviews</p>
+            </div>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Testimonials</h1>
           <p className="text-xl text-gray-300">See what our clients have to say</p>
         </div>
       </section>
@@ -181,19 +186,6 @@ export default function Reviews() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-dark-200">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-white">Ready to Create Your Own Experience?</h2>
-          <p className="text-xl mb-8 text-gray-300">Contact us today to book your event</p>
-          <a
-            href="/contact"
-            className="inline-block glass-strong bg-primary-500/90 text-black px-8 py-3 rounded-2xl font-bold hover:bg-primary-500 transition-all duration-200"
-          >
-            Contact Us
-          </a>
-        </div>
-      </section>
     </div>
   );
 }

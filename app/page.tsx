@@ -405,7 +405,7 @@ export default function Home() {
               href="/reviews"
               className="text-primary-500 hover:text-primary-400 font-semibold inline-flex items-center"
             >
-              View All Reviews <span className="ml-1">→</span>
+              See All Reviews <span className="ml-1">→</span>
             </Link>
           </div>
           <ReviewsCarousel />
@@ -419,7 +419,7 @@ export default function Home() {
             <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">FREQUENTLY ASKED QUESTIONS</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">Common Questions</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 gap-6 mb-8">
             <div className="glass-card rounded-2xl overflow-hidden">
               <button
                 onClick={() => setOpenFAQIndex(openFAQIndex === 0 ? null : 0)}
@@ -544,34 +544,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="relative z-10 py-16 sm:py-20 lg:py-24 bg-dark-200 text-white">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-          <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">READY TO GET STARTED?</p>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-white">
-              Let's Make Your Event Unforgettable
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-              With over 40 years of experience and 7x Couple's Choice Awards, we're here to bring All The Music and All The Fun to your special day.
-            </p>
-          </div>
-          <div className="flex flex-row gap-4 justify-center items-center">
-            <Link
-              href="/booking"
-              className="inline-block bg-primary-500 text-black px-4 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-primary-600 transition-all duration-200"
-            >
-              Get a Quote
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-block glass-strong text-white px-4 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-white/10 transition-all duration-200"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

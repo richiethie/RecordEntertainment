@@ -77,9 +77,6 @@ export default function AnimatedServicesSection({ locationName }: AnimatedServic
 
   return (
     <section ref={sectionRef} className="py-12 bg-dark relative overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 via-transparent to-primary-500/5 animate-pulse"></div>
-      
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10">
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
@@ -198,10 +195,6 @@ export default function AnimatedServicesSection({ locationName }: AnimatedServic
             </Link>
           ))}
         </div>
-
-        {/* Decorative elements */}
-        <div className="hidden lg:block absolute top-20 left-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="hidden lg:block absolute bottom-20 right-10 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
     </section>
   );

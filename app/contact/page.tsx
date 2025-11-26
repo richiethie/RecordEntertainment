@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -37,8 +38,18 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-dark-500 text-white py-16">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
+      <section className="relative text-white overflow-x-hidden min-h-[30vh] flex items-center justify-center">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <VideoBackgroundRounded />
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10 w-full text-center">
+          <div className="mb-4 sm:mb-8">
+            <div className="inline-block px-4 py-2 sm:px-6 sm:py-3 glass-strong rounded-full">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-primary-500 font-semibold">Contact</p>
+            </div>
+          </div>
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Contact</h1>
           <p className="text-xl text-gray-300">Get in touch with us today</p>
         </div>

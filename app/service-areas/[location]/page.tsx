@@ -157,27 +157,6 @@ export default function ServiceAreaPage({ params }: { params: { location: string
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-12 bg-dark-500 text-white">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Event in {locationData.displayName}?</h2>
-          <p className="text-xl mb-8 text-gray-300">Contact us today to discuss your event needs</p>
-          <div className="flex flex-row gap-4 justify-center items-center">
-            <Link
-              href="/booking"
-              className="inline-block bg-primary-500 text-black px-6 py-3 rounded-lg font-semibold text-base hover:bg-primary-600 transition-all duration-200"
-            >
-              Get a Quote
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-block glass-strong text-white px-6 py-3 rounded-lg font-semibold text-base hover:bg-white/10 transition-all duration-200"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
