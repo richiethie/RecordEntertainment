@@ -56,7 +56,7 @@ export default function Footer() {
               Ready to Make Your Event Unforgettable?
             </h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              With over 40 years of experience, we're here to bring All The Music and All The Fun to your special day.
+              With over 40 years of experience, we&apos;re here to bring All The Music and All The Fun to your special day.
             </p>
             <Link
               href="/booking"
@@ -192,7 +192,7 @@ export default function Footer() {
 
               {/* Awards Badge */}
               <div className="glass-card rounded-xl p-4 border-l-4 border-primary-500 inline-block">
-                <p className="text-primary-500 font-bold text-sm mb-1">7x Couple's Choice</p>
+                <p className="text-primary-500 font-bold text-sm mb-1">7x Couple&apos;s Choice</p>
                 <p className="text-gray-400 text-xs">Award Recipient</p>
               </div>
             </div>
