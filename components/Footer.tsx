@@ -45,7 +45,7 @@ export default function Footer() {
       {/* Diagonal accent line */}
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-6">
         {/* Top CTA Section - Desktop Only */}
         <div className="hidden lg:block pt-12 pb-8">
           <div className="glass-card rounded-2xl p-8 text-center">
@@ -71,49 +71,47 @@ export default function Footer() {
 
         {/* Main Footer Content */}
         <div className="pt-8 lg:pt-12 pb-8">
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-12">
             {/* Brand Column */}
-            <div className="col-span-2 lg:col-span-1">
-              <div className="mb-6">
+            <div>
+              <div className="mb-5 text-center lg:text-left">
                 <Image
                   src="/assets/images/reinameonlyinverted.PNG"
                   alt="Record Entertainment"
                   width={280}
                   height={65}
-                  className="h-14 w-auto object-contain mb-4"
+                  className="mx-auto lg:mx-0 h-16 lg:h-14 w-auto object-contain mb-4"
                 />
                 <div className="space-y-1">
                   <p className="text-primary-500 font-semibold text-sm">Decades of Experience</p>
                   <p className="text-gray-400 text-sm">Unparalleled Talent</p>
                 </div>
               </div>
-              
-              {/* Mobile CTA Button */}
-              <div className="lg:hidden mb-6">
+
+              <div className="lg:hidden mb-5">
                 <Link
                   href="/booking"
-                  className="inline-block bg-primary-500 text-black px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-400 transition-all duration-300 text-center"
+                  className="block w-full bg-primary-500 text-black px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-400 transition-all duration-300 text-center"
                 >
                   Request a Quote
                 </Link>
               </div>
 
-              {/* Contact Info */}
-              <div className="space-y-3">
+              <div className="space-y-3 border-t border-white/10 pt-5 lg:border-0 lg:pt-0">
                 <div>
                   <p className="text-gray-400 text-sm">258 S Main St</p>
                   <p className="text-gray-400 text-sm">Fond du Lac, WI 54935</p>
                 </div>
-                <div>
-                  <a 
-                    href="tel:9209486887" 
-                    className="text-white hover:text-primary-500 transition-colors text-sm font-medium block"
+                <div className="space-y-1">
+                  <a
+                    href="tel:9209486887"
+                    className="text-white hover:text-primary-500 transition-colors text-sm font-medium block py-1"
                   >
                     (920) 948-6887
                   </a>
-                  <a 
-                    href="mailto:Kevin@recordentertainment.com" 
-                    className="text-gray-400 hover:text-primary-500 transition-colors text-sm block break-all"
+                  <a
+                    href="mailto:Kevin@recordentertainment.com"
+                    className="text-gray-400 hover:text-primary-500 transition-colors text-sm block py-1 break-words"
                   >
                     Kevin@recordentertainment.com
                   </a>
@@ -121,20 +119,19 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Quick Links Column */}
             <div>
-              <h4 className="text-lg font-bold mb-6 relative inline-block">
+              <h4 className="text-base lg:text-lg font-bold mb-4 lg:mb-6 relative inline-block">
                 Quick Links
                 <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-primary-500"></span>
               </h4>
-              <ul className="space-y-3">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 lg:grid-cols-1 lg:gap-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
-                    <Link 
-                      href={link.href} 
-                      className="text-gray-400 hover:text-primary-500 transition-all duration-200 text-sm flex items-center group"
+                    <Link
+                      href={link.href}
+                      className="text-gray-400 hover:text-primary-500 transition-all duration-200 text-sm flex items-center py-1 group"
                     >
-                      <span className="w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
+                      <span className="hidden lg:block w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -142,20 +139,19 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Service Areas Column */}
             <div>
-              <h4 className="text-lg font-bold mb-6 relative inline-block">
+              <h4 className="text-base lg:text-lg font-bold mb-4 lg:mb-6 relative inline-block">
                 Service Areas
                 <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-primary-500"></span>
               </h4>
-              <ul className="space-y-3">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-2.5 lg:grid-cols-1 lg:gap-y-3">
                 {serviceAreas.map((area) => (
                   <li key={area.name}>
-                    <Link 
-                      href={area.href} 
-                      className="text-gray-400 hover:text-primary-500 transition-all duration-200 text-sm flex items-center group"
+                    <Link
+                      href={area.href}
+                      className="text-gray-400 hover:text-primary-500 transition-all duration-200 text-sm flex items-center py-1 group"
                     >
-                      <span className="w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
+                      <span className="hidden lg:block w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
                       {area.name}
                     </Link>
                   </li>
@@ -163,37 +159,33 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Social & Awards Column */}
             <div>
-              <h4 className="text-lg font-bold mb-6 relative inline-block">
+              <h4 className="text-base lg:text-lg font-bold mb-4 lg:mb-6 relative inline-block">
                 Connect With Us
                 <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-primary-500"></span>
               </h4>
-              
-              {/* Social Links */}
-              <div className="space-y-3 mb-8">
+
+              <div className="flex flex-wrap gap-2 mb-5 lg:mb-8 lg:flex-col lg:gap-3">
                 {socialLinks.map((social) => {
                   const LinkComponent = social.external ? 'a' : Link;
-                  const linkProps = social.external 
+                  const linkProps = social.external
                     ? { href: social.href, target: '_blank', rel: 'noopener noreferrer' }
                     : { href: social.href };
-                  
+
                   return (
-                    <div key={social.name}>
-                      <LinkComponent
-                        {...linkProps}
-                        className="text-gray-400 hover:text-primary-500 transition-all duration-200 text-sm flex items-center group"
-                      >
-                        <span className="w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
-                        {social.name}
-                      </LinkComponent>
-                    </div>
+                    <LinkComponent
+                      key={social.name}
+                      {...linkProps}
+                      className="text-gray-300 hover:text-primary-500 transition-all duration-200 text-sm rounded-full border border-white/15 px-3 py-1.5 lg:rounded-none lg:border-0 lg:px-0 lg:py-0 lg:text-gray-400 lg:flex lg:items-center group"
+                    >
+                      <span className="hidden lg:block w-1.5 h-1.5 bg-primary-500/0 rounded-full mr-3 group-hover:bg-primary-500 transition-all duration-200"></span>
+                      {social.name}
+                    </LinkComponent>
                   );
                 })}
               </div>
 
-              {/* Awards Badge */}
-              <div className="glass-card rounded-xl p-4 border-l-4 border-primary-500 inline-block">
+              <div className="glass-card w-fit max-w-full rounded-xl p-4 border-l-4 border-primary-500">
                 <p className="text-primary-500 font-bold text-sm mb-1">7x Couple&apos;s Choice</p>
                 <p className="text-gray-400 text-xs">Award Recipient</p>
               </div>
@@ -205,7 +197,11 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-6 pb-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm text-center md:text-left">
-              <p>Copyright © {new Date().getFullYear()} Record Entertainment | All Rights Reserved.</p>
+              <p>
+                <span className="block sm:inline">Copyright © {new Date().getFullYear()} Record Entertainment</span>
+                <span className="hidden sm:inline"> | </span>
+                <span className="block sm:inline">All Rights Reserved.</span>
+              </p>
             </div>
             <div className="flex items-center gap-2 text-gray-500 text-xs">
               <span>Made with</span>
