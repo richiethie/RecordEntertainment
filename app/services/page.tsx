@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
+import VideographyShowcase from '@/components/VideographyShowcase';
 
 export default function Services() {
   const [visibleSections, setVisibleSections] = useState<{ [key: string]: boolean[] }>({});
@@ -389,6 +390,8 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      <VideographyShowcase />
 
     </div>
   );

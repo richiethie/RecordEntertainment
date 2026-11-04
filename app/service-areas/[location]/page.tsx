@@ -13,6 +13,11 @@ interface LocationData {
 }
 
 const locations: Record<string, LocationData> = {
+  'door-county': {
+    name: 'Door County',
+    displayName: 'Door County',
+    description: 'Providing professional DJ services throughout Door County for weddings, private events, corporate gatherings, and celebrations of all sizes.',
+  },
   'fond-du-lac': {
     name: 'Fond du Lac',
     displayName: 'Fond du Lac',
@@ -42,6 +47,11 @@ const locations: Record<string, LocationData> = {
     name: 'Sheboygan',
     displayName: 'Sheboygan',
     description: 'Professional entertainment services for Sheboygan and nearby communities. We bring All The Music and All The Fun to your event.',
+  },
+  'stevens-point': {
+    name: 'Stevens Point',
+    displayName: 'Stevens Point',
+    description: 'Serving Stevens Point and Central Wisconsin with polished, high-energy DJ entertainment tailored to your event and audience.',
   },
   'wisconsin-dells': {
     name: 'Wisconsin Dells',

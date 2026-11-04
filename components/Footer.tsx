@@ -3,12 +3,14 @@ import Image from 'next/image';
 
 export default function Footer() {
   const serviceAreas = [
+    { name: 'Door County', href: '/service-areas/door-county' },
     { name: 'Fond du Lac', href: '/service-areas/fond-du-lac' },
     { name: 'Fox Valley', href: '/service-areas/fox-valley' },
     { name: 'Green Bay', href: '/service-areas/green-bay' },
     { name: 'Madison', href: '/service-areas/madison' },
     { name: 'Milwaukee', href: '/service-areas/milwaukee' },
     { name: 'Sheboygan', href: '/service-areas/sheboygan' },
+    { name: 'Stevens Point', href: '/service-areas/stevens-point' },
     { name: 'Wisconsin Dells', href: '/service-areas/wisconsin-dells' },
   ];
 
@@ -62,7 +64,7 @@ export default function Footer() {
               href="/booking"
               className="inline-block bg-primary-500 text-black px-8 py-3 rounded-xl font-bold text-lg hover:bg-primary-400 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary-500/20"
             >
-              Get a Quote Today
+              Request a Quote
             </Link>
           </div>
         </div>
@@ -92,7 +94,7 @@ export default function Footer() {
                   href="/booking"
                   className="inline-block bg-primary-500 text-black px-6 py-3 rounded-xl font-bold text-sm hover:bg-primary-400 transition-all duration-300 text-center"
                 >
-                  Get a Quote
+                  Request a Quote
                 </Link>
               </div>
 

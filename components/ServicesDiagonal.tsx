@@ -82,7 +82,7 @@ export default function ServicesDiagonal({ services, sectionTitle, sectionSubtit
             return (
               <div
                 key={index}
-                className={`grid grid-cols-2 items-stretch gap-3 sm:gap-8 ${
+                className={`grid grid-cols-2 items-start gap-3 sm:gap-8 ${
                   visibleItems[index]
                     ? 'opacity-100 translate-x-0'
                     : isEven
@@ -95,20 +95,20 @@ export default function ServicesDiagonal({ services, sectionTitle, sectionSubtit
                 <div 
                   className={`w-full mt-4 ${!isEven ? 'order-2' : 'order-1'}`}
                 >
-                  <div className={`relative w-full h-full min-h-[128px] sm:min-h-[256px] rounded-xl sm:rounded-2xl overflow-hidden group ${
-                    isEven 
-                      ? 'w-[180%] -mr-[80%] sm:w-full sm:mr-0' 
-                      : 'w-[180%] -ml-[80%] sm:w-full sm:ml-0'
-                  }`}>
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-700"
-                      sizes="(max-width: 1024px) 50vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    <div className={`absolute ${isEven ? 'bottom-0 left-0' : 'top-0 right-0'} w-32 h-1 bg-primary-500 transform ${isEven ? 'skew-x-12' : '-skew-x-12'}`}></div>
+                  <div className="relative h-[260px] sm:h-[360px]">
+                    <div className={`absolute top-0 h-full w-[85vw] rounded-xl sm:rounded-2xl overflow-hidden group ${
+                      isEven ? 'left-[2vw]' : 'right-[2vw]'
+                    }`}>
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                        sizes="(max-width: 1024px) 85vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className={`absolute ${isEven ? 'bottom-0 left-0' : 'top-0 right-0'} w-32 h-1 bg-primary-500 transform ${isEven ? 'skew-x-12' : '-skew-x-12'}`}></div>
+                    </div>
                   </div>
                 </div>
 
@@ -116,13 +116,13 @@ export default function ServicesDiagonal({ services, sectionTitle, sectionSubtit
                 <div 
                   className={`w-full mb-4 flex flex-col ${!isEven ? 'order-1' : 'order-2'}`}
                 >
-                  <div className="glass-card rounded-xl sm:rounded-3xl p-4 sm:p-8 hover:scale-105 transition-transform duration-500 relative overflow-hidden h-full flex flex-col justify-center">
+                  <div className="glass-card rounded-xl sm:rounded-3xl p-4 sm:p-8 hover:scale-105 transition-transform duration-500 relative overflow-hidden h-[260px] sm:h-[360px] flex flex-col justify-center">
                     <div className="absolute inset-0 bg-primary-900/10 pointer-events-none"></div>
                     <div className="relative z-10">
                       <h3 className="text-base sm:text-2xl font-bold text-white mb-2 sm:mb-4 group-hover:text-primary-500 transition-colors duration-300">
                         {service.title}
                       </h3>
-                      <p className="text-xs sm:text-base text-gray-300 leading-relaxed">
+                      <p className="text-xs sm:text-base text-gray-300 leading-relaxed overflow-y-auto max-h-[140px] sm:max-h-[190px] pr-1">
                         {service.description}
                       </p>
                       <div className="mt-3 sm:mt-6 flex items-center gap-2 sm:gap-3">

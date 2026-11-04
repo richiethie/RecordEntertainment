@@ -33,9 +33,9 @@ export default function AnimatedFeatureItems() {
   }, []);
 
   const items = [
-    { title: 'Award Winning' },
-    { title: 'Established Team' },
     { title: 'Innovative' },
+    { title: 'Award-Winning' },
+    { title: 'Established Team' },
     { title: 'Professional' },
   ];
 

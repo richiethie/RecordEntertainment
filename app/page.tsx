@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
@@ -13,132 +13,110 @@ import AnimatedFeatureItems from '@/components/AnimatedFeatureItems';
 import ReviewsCarousel from '@/components/ReviewsCarousel';
 import CountingNumber from '@/components/CountingNumber';
 import YearCarousel from '@/components/YearCarousel';
+import VideographyShowcase from '@/components/VideographyShowcase';
+
+const landingLinks = [
+  { label: 'Weddings', href: '/weddings' },
+  { label: 'Corporate', href: '/corporate-events' },
+  { label: 'Schools', href: '/school-dances' },
+  { label: 'Clubs', href: '/club-dj' },
+  { label: 'Videography', href: '#videography' },
+];
 
 export default function Home() {
-  const [animationPhase, setAnimationPhase] = useState<'text-in' | 'text-out' | 'logo-in'>('text-in');
-  const [showText, setShowText] = useState(true);
-  const [showLogo, setShowLogo] = useState(false);
-  const [logoOpacity, setLogoOpacity] = useState(0);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  const yearsOfExperience = new Date().getFullYear() - 1983;
+  const linkRowRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    // Calculate total time for character animations
-    // Fade in: 1s duration + (charCount * 0.05s stagger) ≈ 2.5s
-    // Wait: 0.4s
-    // Fade out: 0.5s duration + (charCount * 0.05s stagger) ≈ 1.5s
-    const textLength = 'Rethink your event\'s potential.'.length;
-    const fadeInTime = 1000 + (textLength * 50); // 1s + stagger
-    const waitTime = 100; // 0.1s wait
-    const fadeOutTime = 500 + (textLength * 50); // 0.5s + stagger
-    
-    // Phase 1: Text fades in character by character
-    const textInTimer = setTimeout(() => {
-      setAnimationPhase('text-out');
-    }, fadeInTime + waitTime);
+  useLayoutEffect(() => {
+    const row = linkRowRef.current;
+    if (!row) return;
 
-    // Phase 2: Text fades out character by character (from end)
-    const textOutTimer = setTimeout(() => {
-      setShowText(false);
-      setShowLogo(true);
-      setAnimationPhase('logo-in');
-      // Trigger fade-in after a tiny delay to ensure DOM is ready
-      setTimeout(() => {
-        setLogoOpacity(1);
-      }, 10);
-    }, fadeInTime + waitTime + fadeOutTime);
-
-    return () => {
-      clearTimeout(textInTimer);
-      clearTimeout(textOutTimer);
+    const updateSeparators = () => {
+      const items = [...row.querySelectorAll<HTMLElement>('[data-landing-link]')];
+      items.forEach((item, index) => {
+        const separator = item.querySelector<HTMLElement>('[data-landing-separator]');
+        if (!separator) return;
+        const previous = items[index - 1];
+        const sameLine = !!previous && Math.abs(item.offsetTop - previous.offsetTop) < 2;
+        separator.style.opacity = sameLine ? '1' : '0';
+      });
     };
+
+    updateSeparators();
+    const observer = new ResizeObserver(updateSeparators);
+    observer.observe(row);
+    return () => observer.disconnect();
   }, []);
+
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative text-white overflow-x-hidden min-h-[calc(100vh-4rem)] flex items-start justify-center pt-[30vh]">
-        {/* Video Background - Full Screen */}
-        <div className="fixed inset-0 w-full h-full z-0">
-          <VideoBackgroundRounded />
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 relative z-10 w-full">
-          {/* Text Content - Centered */}
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">MAKE IT COUNT</p>
-            
-            {/* Animated Text */}
-            {showText && (
-              <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-12 md:mb-6 leading-tight text-glass mt-4">
-                {'Rethink your event\'s potential.'.split(/(\s+)/).map((segment, segmentIndex, segments) => {
-                  // Calculate global character index for this segment
-                  const globalStartIndex = segments.slice(0, segmentIndex).join('').length;
-                  const isSpace = /^\s+$/.test(segment);
-                  
-                  return (
-                    <span 
-                      key={segmentIndex} 
-                      className="inline-block whitespace-pre-wrap"
-                      style={{ 
-                        wordBreak: isSpace ? 'normal' : 'keep-all',
-                        whiteSpace: isSpace ? 'pre' : 'nowrap'
-                      }}
-                    >
-                      {segment.split('').map((char, charIndex) => {
-                        const globalIndex = globalStartIndex + charIndex;
-                        return (
-                          <span
-                            key={charIndex}
-                            className={`inline-block ${
-                              animationPhase === 'text-in' 
-                                ? 'animate-char-fade-in' 
-                                : animationPhase === 'text-out'
-                                ? 'animate-char-fade-out'
-                                : 'opacity-0'
-                            }`}
-                            style={{
-                              animationDelay: animationPhase === 'text-in' 
-                                ? `${globalIndex * 0.05}s`
-                                : animationPhase === 'text-out'
-                                ? `${('Rethink your event\'s potential.'.length - 1 - globalIndex) * 0.05}s`
-                                : '0s',
-                            }}
-                          >
-                            {char}
-                          </span>
-                        );
-                      })}
-                    </span>
-                  );
-                })}
+      <section className="relative z-10 text-white bg-black lg:h-[65vh] lg:flex lg:items-center">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 w-full py-16 sm:py-20 lg:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-6">
+              <p className="text-sm uppercase tracking-[0.22em] text-primary-500 mb-5 font-semibold">Make it count</p>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6">
+                All the music. All the fun.
               </h1>
-            )}
-
-            {/* Logo */}
-            {showLogo && (
-              <div 
-                className="mb-6 transition-opacity duration-[2000ms] ease-in"
-                style={{ opacity: logoOpacity }}
-              >
-                <Image
-                  src="/assets/images/reinameonlyinverted.PNG"
-                  alt="Record Entertainment"
-                  width={500}
-                  height={150}
-                  className="mx-auto h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 w-auto object-contain"
-                  priority
-                />
+              <p className="text-base sm:text-xl text-gray-300 leading-relaxed max-w-xl mb-6">
+                Sound, lighting, and a dance floor that stays full. Record Entertainment has been doing that for weddings and events across Wisconsin since 1983.
+              </p>
+              <p className="text-sm uppercase tracking-[0.18em] text-white/80 mb-8">
+                Music <span className="text-primary-500">·</span> Light <span className="text-primary-500">·</span> The room
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <Link
+                  href="/booking"
+                  className="inline-block text-center bg-primary-500 text-black px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-primary-600 transition-all duration-200"
+                >
+                  Request a Quote
+                </Link>
+                <Link
+                  href="/services"
+                  className="inline-block text-center glass-strong text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-white/10 transition-all duration-200"
+                >
+                  See Services
+                </Link>
               </div>
-            )}
-
-            <div className="flex justify-center">
-              <Link
-                href="/booking"
-                className="bg-primary-500 text-black px-4 py-2 sm:px-8 sm:py-4 rounded-lg font-semibold text-md sm:text-lg hover:bg-primary-600 transition-all duration-200"
-              >
-                Get a Quote
-              </Link>
+            </div>
+            <div className="lg:col-span-6">
+              <div className="relative aspect-[4/3] overflow-hidden bg-black lg:aspect-auto lg:h-[48vh]">
+                <VideoBackgroundRounded />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 sm:p-6 pointer-events-none">
+                  <p className="text-xs uppercase tracking-[0.22em] text-primary-500 font-semibold">Wisconsin</p>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 bg-dark border-y border-white/10">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+          <nav
+            ref={linkRowRef}
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 py-5 sm:gap-x-8 sm:py-6 lg:gap-x-14"
+            aria-label="Event types"
+          >
+            {landingLinks.map((item, index) => (
+              <div key={item.href} data-landing-link className="relative flex items-center">
+                {index > 0 && (
+                  <span
+                    data-landing-separator
+                    className="absolute top-1/2 left-[-0.625rem] sm:left-[-1rem] lg:left-[-1.75rem] h-3.5 w-px -translate-x-1/2 -translate-y-1/2 bg-white/35"
+                    aria-hidden="true"
+                  />
+                )}
+                <Link
+                  href={item.href}
+                  className="py-2 text-xs sm:text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-primary-500 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              </div>
+            ))}
+          </nav>
         </div>
       </section>
 
@@ -146,14 +124,14 @@ export default function Home() {
       <section className="relative z-10 py-8 sm:py-12 lg:py-20 bg-black">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
             <div className="text-center pb-8 md:pb-0 border-b md:border-b-0 border-gray-600/30">
-              <CountingNumber target={40} duration={2500} />
+              <CountingNumber target={yearsOfExperience} duration={2500} />
               <div className="text-xl text-gray-300">Years of experience</div>
             </div>
             <div className="text-center md:pt-0">
               <div className="text-6xl font-bold text-primary-500 mb-2">7x</div>
-              <div className="text-xl text-gray-300">Couple's Choice Award Recipient</div>
+              <div className="text-xl text-gray-300">Recent Couples&apos; Choice Awards</div>
               <YearCarousel />
             </div>
           </div>
@@ -169,7 +147,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Weddings</p>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">Weddings</h2>
               <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6">
-                We've helped countless couples bring their vision to life. Allow us to bring the energy to the next level while keeping the formalities elegant and timeless.
+                We&apos;ve helped thousands of couples make their dream weddings a reality.
               </p>
               <Link
                 href="/weddings"
@@ -210,7 +188,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Corporate Events/Parties</p>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">Corporate Events/Parties</h2>
               <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6">
-                Seminars, Expos, Meetings, Holiday or Special Events. Our extensive corporate event experience can elevate your next occasion.
+                Seminars, Expos, Fundraisers, Holiday Parties, and Special Events. Our extensive experience can elevate your next gathering.
               </p>
               <Link
                 href="/corporate-events"
@@ -251,7 +229,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">School Dances</p>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">School Dances</h2>
               <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6">
-                Age-appropriate, professionally curated DJ services with radio-edited music. Our interactive DJs expertly build energy on the dancefloor with games and interaction = All The Music, All The Fun! Price varies by hours needed.
+                Age-appropriate, professionally curated DJ services with radio-edited music. Our interactive DJs expertly build energy on the dance floor, adhering to school rules and expectations.
               </p>
               <Link
                 href="/school-dances"
@@ -292,7 +270,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Club DJ</p>
               <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">Club DJ</h2>
               <p className="text-sm sm:text-lg text-gray-300 leading-relaxed mb-6">
-                Take your club experience to new heights with our dynamic DJ services, boasting a proven track record of success and seamless transitions. Whether its for special events or a weekend night of non-stop dancing, trust us to elevate your Club DJ needs.
+                Whether it&apos;s a special one-night-only engagement or a full weekend of nonstop dancing, we can take your club experience to the next level, boasting a proven track record of high energy and seamless transitions.
               </p>
               <Link
                 href="/club-dj"
@@ -325,6 +303,8 @@ export default function Home() {
         </div>
       </section>
 
+      <VideographyShowcase />
+
       {/* Exceptional Section */}
       <section className="relative z-10 py-8 sm:py-12 lg:py-20 bg-dark-200">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
@@ -332,7 +312,7 @@ export default function Home() {
             <p className="text-sm uppercase tracking-wider text-primary-500 mb-4 font-semibold">Exceptional</p>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white">Let's make your day count</h2>
             <p className="text-sm sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              We provide comprehensive event production services. From sound & lighting to special effects & photo booths, we'll help you create an unforgettable experience. We collaborate with industry-leading professionals to deliver the perfect solution for your event.
+              We provide comprehensive event production services. From sound and lighting to photo booths and special effects, we&apos;ll help to create an unforgettable experience. We work in collaboration with your chosen vendors and other industry professionals to deliver the perfect solution for your event.
             </p>
           </div>
           <AnimatedFeatureItems />
@@ -443,7 +423,7 @@ export default function Home() {
               {openFAQIndex === 0 && (
                 <div className="px-6 pb-6 animate-fade-in">
                   <p className="text-gray-300">
-                    Our packages include professional DJ services, sound equipment, lighting, pre-wedding consultation, travel, and setup. Additional services like photo booths and uplights can be added.
+                    Our packages are entirely customizable, meaning we can be there for as much of your celebration as you need. Our base rate includes all necessary sound equipment, microphones, dance floor lighting, pre-wedding consultation, travel, and setup.
                   </p>
                 </div>
               )}
@@ -471,7 +451,7 @@ export default function Home() {
               {openFAQIndex === 1 && (
                 <div className="px-6 pb-6 animate-fade-in">
                   <p className="text-gray-300">
-                    We recommend booking as soon as you have your date confirmed, especially for popular wedding dates. Many clients book 6-12 months in advance.
+                    We recommend booking our services as soon as you have your date and venue confirmed, especially for dates May through October. Most of our clients lock us in 6-12 months in advance.
                   </p>
                 </div>
               )}
@@ -499,7 +479,7 @@ export default function Home() {
               {openFAQIndex === 2 && (
                 <div className="px-6 pb-6 animate-fade-in">
                   <p className="text-gray-300">
-                    Yes! We provide ceremony music and sound, including microphones for the officiant and readers, starting 30 minutes before your ceremony begins.
+                    Yes! We provide music and sound services, including microphones for your officiant and readers. Prelude music is also included, starting 30 minutes before your ceremony begins.
                   </p>
                 </div>
               )}
@@ -527,7 +507,7 @@ export default function Home() {
               {openFAQIndex === 3 && (
                 <div className="px-6 pb-6 animate-fade-in">
                   <p className="text-gray-300">
-                    Absolutely! During your pre-event consultation, we'll discuss your music preferences, must-play songs, and do-not-play list to ensure your event reflects your style.
+                    Absolutely! During your pre-wedding consultation, we&apos;ll discuss your song selections for all your special moments, as well as a must-play and do-not-play list to ensure your event reflects your style and preferences.
                   </p>
                 </div>
               )}

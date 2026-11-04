@@ -35,7 +35,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['"Stack Sans Text"', 'system-ui', 'sans-serif'],
+        sans: ['"Domine"', 'Georgia', '"Times New Roman"', 'serif'],
       },
     },
   },

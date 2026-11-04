@@ -9,6 +9,7 @@ export default function Navigation() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     { href: '/our-djs', label: 'Our DJs' },
     { href: '/reviews', label: 'Reviews' },
@@ -44,13 +45,13 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Book Now Button - Right */}
+          {/* Submit Inquiry Button - Right */}
           <div className="hidden md:flex items-center flex-shrink-0 ml-8">
             <Link
               href="/booking"
               className="bg-primary-500 text-black px-6 py-2 rounded-lg font-semibold text-sm hover:bg-primary-600 transition-all duration-200"
             >
-              Book Now
+              Submit Inquiry
             </Link>
           </div>
 
@@ -97,7 +98,7 @@ export default function Navigation() {
                       className="block mt-2 bg-primary-500 text-black px-6 py-3 rounded-lg font-semibold text-sm hover:bg-primary-600 transition-all duration-200 text-center w-full"
                       onClick={() => setIsOpen(false)}
                     >
-                      Book Now
+                      Submit Inquiry
                     </Link>
                   </div>
                 </div>

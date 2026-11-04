@@ -194,16 +194,6 @@ export default function OurDJs() {
                         className="object-cover group-hover:scale-110 transition-transform duration-700"
                         sizes="(max-width: 640px) 40vw, (max-width: 1024px) 33vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent"></div>
-                      
-                      {/* Number badge */}
-                      <div className={`absolute ${
-                        isLeft ? 'top-2 left-2 sm:top-4 sm:left-4' : 'top-2 right-2 sm:top-4 sm:right-4'
-                      }`}>
-                        <div className="w-8 h-8 sm:w-12 sm:h-12 lg:w-20 lg:h-20 bg-primary-500/20 backdrop-blur-md rounded-full flex items-center justify-center border-2 border-primary-500/50">
-                          <span className="text-xs sm:text-lg lg:text-3xl font-bold text-primary-500">{index + 1}</span>
-                        </div>
-                      </div>
                       
                       {/* Diagonal accent line */}
                       <div className={`absolute ${

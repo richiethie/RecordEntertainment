@@ -1,7 +1,7 @@
 'use client';
 
 export default function InnovativeCarousel() {
-  const words = ['_elegant_', '_energetic_', '_professional_', '_unforgettable_'];
+  const words = ['"Elegant!"', '"Unforgettable!"', '"Innovative!"', '"Professional!"'];
   
   return (
     <div className="relative w-full overflow-hidden py-4">
@@ -10,7 +10,7 @@ export default function InnovativeCarousel() {
         {words.map((word, i) => (
           <span
             key={`first-${i}`}
-            className="inline-block text-6xl sm:text-7xl md:text-8xl font-bold text-primary-500 italic px-8 flex-shrink-0"
+            className="inline-block text-6xl sm:text-7xl md:text-8xl font-bold text-primary-500 px-8 flex-shrink-0"
           >
             {word}
           </span>
@@ -19,7 +19,7 @@ export default function InnovativeCarousel() {
         {words.map((word, i) => (
           <span
             key={`second-${i}`}
-            className="inline-block text-6xl sm:text-7xl md:text-8xl font-bold text-primary-500 italic px-8 flex-shrink-0"
+            className="inline-block text-6xl sm:text-7xl md:text-8xl font-bold text-primary-500 px-8 flex-shrink-0"
           >
             {word}
           </span>

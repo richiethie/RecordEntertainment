@@ -13,7 +13,7 @@ const faqs: FAQ[] = [
   {
     category: 'Booking & Pricing',
     question: 'How far in advance should I book?',
-    answer: 'We recommend booking as soon as you have your date confirmed, especially for popular wedding dates. Many clients book 6-12 months in advance to ensure availability. For corporate events and school dances, we typically need at least 2-4 weeks notice.',
+    answer: 'We recommend booking our services as soon as you have your date and venue confirmed, especially for dates May through October. Most of our clients lock us in 6-12 months in advance.',
   },
   {
     category: 'Booking & Pricing',
@@ -28,17 +28,17 @@ const faqs: FAQ[] = [
   {
     category: 'Wedding Services',
     question: 'What\'s included in your wedding packages?',
-    answer: 'Our packages include professional DJ services, high-quality sound equipment, standard lighting, pre-wedding consultation, travel, and setup. The Classic Package includes 4 hours of dancing. Additional services like photo booths, uplights, monogram lights, and multimedia memories can be added.',
+    answer: 'Our packages are entirely customizable, meaning we can be there for as much of your celebration as you need. Our base rate includes all necessary sound equipment, microphones, dance floor lighting, pre-wedding consultation, travel, and setup.',
   },
   {
     category: 'Wedding Services',
     question: 'Do you provide music for ceremonies?',
-    answer: 'Yes! We provide ceremony music and sound services, including microphones for the officiant and readers. We start music 30 minutes before your ceremony begins as guests are being seated, and can transition seamlessly to cocktail music afterward.',
+    answer: 'Yes! We provide music and sound services, including microphones for your officiant and readers. Prelude music is also included, starting 30 minutes before your ceremony begins.',
   },
   {
     category: 'Wedding Services',
     question: 'Can I request specific songs?',
-    answer: 'Absolutely! During your pre-wedding consultation, we\'ll discuss your music preferences, must-play songs, do-not-play list, and special songs for key moments (first dance, parent dances, etc.). We want your event to reflect your unique style and preferences.',
+    answer: 'Absolutely! During your pre-wedding consultation, we\'ll discuss your song selections for all your special moments, as well as a must-play and do-not-play list to ensure your event reflects your style and preferences.',
   },
   {
     category: 'Wedding Services',
@@ -83,7 +83,7 @@ const faqs: FAQ[] = [
   {
     category: 'General',
     question: 'What areas do you service?',
-    answer: 'We service Fond du Lac, Fox Valley, Green Bay, Madison, Milwaukee, Sheboygan, Wisconsin Dells, and surrounding areas. Travel is included in our packages for events within our service area.',
+    answer: 'We service Door County, Fond du Lac, Fox Valley, Green Bay, Madison, Milwaukee, Sheboygan, Stevens Point, Wisconsin Dells, and surrounding areas. Travel is included in our packages for events within our service area.',
   },
   {
     category: 'General',
@@ -198,7 +198,7 @@ export default function FAQ() {
               href="/booking"
               className="inline-block glass-strong text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all duration-200"
             >
-              Get a Quote
+              Request a Quote
             </Link>
           </div>
         </div>
