@@ -33,7 +33,7 @@ export default function Home() {
     if (!row) return;
 
     const updateSeparators = () => {
-      const items = [...row.querySelectorAll<HTMLElement>('[data-landing-link]')];
+      const items = Array.from(row.querySelectorAll<HTMLElement>('[data-landing-link]'));
       items.forEach((item, index) => {
         const separator = item.querySelector<HTMLElement>('[data-landing-separator]');
         if (!separator) return;
