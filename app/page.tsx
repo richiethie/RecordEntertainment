@@ -1,6 +1,6 @@
 'use client';
 
-import { useLayoutEffect, useRef, useState } from 'react';
+import { Fragment, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import VideoBackgroundRounded from '@/components/VideoBackgroundRounded';
@@ -65,16 +65,16 @@ export default function Home() {
               <p className="text-sm uppercase tracking-[0.18em] text-white/80 mb-8">
                 Music <span className="text-primary-500">·</span> Light <span className="text-primary-500">·</span> The room
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="flex flex-row gap-3 sm:gap-4">
                 <Link
                   href="/booking"
-                  className="inline-block text-center bg-primary-500 text-black px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-primary-600 transition-all duration-200"
+                  className="flex-1 sm:flex-none text-center bg-primary-500 text-black px-3 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-primary-600 transition-all duration-200"
                 >
                   Request a Quote
                 </Link>
                 <Link
                   href="/services"
-                  className="inline-block text-center glass-strong text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-white/10 transition-all duration-200"
+                  className="flex-1 sm:flex-none text-center glass-strong text-white px-3 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold text-sm sm:text-lg hover:bg-white/10 transition-all duration-200"
                 >
                   See Services
                 </Link>
@@ -100,21 +100,24 @@ export default function Home() {
             aria-label="Event types"
           >
             {landingLinks.map((item, index) => (
-              <div key={item.href} data-landing-link className="relative flex items-center">
-                {index > 0 && (
-                  <span
-                    data-landing-separator
-                    className="absolute top-1/2 left-[-0.625rem] sm:left-[-1rem] lg:left-[-1.75rem] h-3.5 w-px -translate-x-1/2 -translate-y-1/2 bg-white/35"
-                    aria-hidden="true"
-                  />
-                )}
-                <Link
-                  href={item.href}
-                  className="py-2 text-xs sm:text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-primary-500 transition-colors"
-                >
-                  {item.label}
-                </Link>
-              </div>
+              <Fragment key={item.href}>
+                <div data-landing-link className="relative flex items-center">
+                  {index > 0 && (
+                    <span
+                      data-landing-separator
+                      className="absolute top-1/2 left-[-0.625rem] sm:left-[-1rem] lg:left-[-1.75rem] h-3.5 w-px -translate-x-1/2 -translate-y-1/2 bg-white/35"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <Link
+                    href={item.href}
+                    className="py-2 text-xs sm:text-sm uppercase tracking-[0.18em] text-gray-300 hover:text-primary-500 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </div>
+                {index === 2 && <span className="basis-full h-0 sm:hidden" aria-hidden="true" />}
+              </Fragment>
             ))}
           </nav>
         </div>
