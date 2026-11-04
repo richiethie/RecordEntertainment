@@ -3,9 +3,26 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
+const shareImage = {
+  url: "/assets/images/reinameonlyinverted.PNG",
+  width: 6000,
+  height: 2000,
+  alt: "Record Entertainment",
+};
+
 export const metadata: Metadata = {
+  // metadataBase: new URL("https://recordentertainment.com"),
   title: "Record Entertainment | Professional DJ Services",
   description: "Decades of experience providing unparalleled DJ services for weddings and events in Wisconsin. All The Music, All The Fun!",
+  openGraph: {
+    type: "website",
+    siteName: "Record Entertainment",
+    images: [shareImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [shareImage],
+  },
   icons: {
     icon: [
       { url: '/assets/images/favicon-60.png', sizes: '60x60', type: 'image/png' },
